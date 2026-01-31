@@ -10,11 +10,13 @@ the headlights are on we added a switch to turn on the high beams.
 Starting Repository
 [(https://github.com/goldstn2-oss/Project-1-218-N-M)]
 
-+--------------------------------------------------------------------------------------+
+
+
+ --------------------------------------------------------------------------------------
 |                      Table of Testing Results For the Ignitions                      |
-+----------------------+---------------------------+-----------------------------------+
+ ---------------------- --------------------------- -----------------------------------
 | Specification        | Test Process              | Results                           |
-+----------------------+---------------------------+-----------------------------------+
+ ----------------------+--------------------------- -----------------------------------
 | Turn Green LED on    | 4 total switches:         | 1.'Welcome to                     |
 | -->Igntion is able   | (DS,PS,DSSB,PSSB)         | enhanced                          |
 | to be pushed safely  | 1. All switches on        | alarm system                      |
@@ -27,7 +29,7 @@ Starting Repository
 |                      |                           | message not printed               |
 |                      |                           | 3. No Green light                 |
 |                      |                           | or welcome message                |
-+----------------------+---------------------------+-----------------------------------+
+ ---------------------- --------------------------- -----------------------------------
 | Try to start the     | 1. When all the           | 4 Error Message:                  |
 | engine               | switches are on           |    a. Driver seat                 |
 | by pressing          | ( green led is on         |       is not occupies             |
@@ -75,7 +77,7 @@ Starting Repository
 |                      |                           | the switches states               |
 |                      |                           | don't change anything             |
 |                      |                           | about the system.                 |
-+----------------------+---------------------------+-----------------------------------+
+ ---------------------- --------------------------- ----------------------------------- 
 | Turning off          | 1. All                    | 1. Red light turns off,           |
 | the engine           | switches are              | 'Engine Off!'.                    |
 | by pressing          | still in                  | Green light turns                 |
@@ -87,4 +89,4 @@ Starting Repository
 |                      | because the               |  'Engine Off!'.                   |
 |                      | passenger got out for     | Green light does                  |
 |                      | example.                  | not turn back on.                 |
-+----------------------+---------------------------+-----------------------------------+
+ ---------------------- --------------------------- ----------------------------------- 

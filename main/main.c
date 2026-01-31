@@ -20,19 +20,18 @@
 #define LOOP_DELAY_MS 25
 
 //Defining ADC parameters 
-
-#define ADC_CHANNEL_GPIO16   ADC_CHANNEL_5   
-#define ADC_CHANNEL_GPIO17   ADC_CHANNEL_6   
-#define ADC_ATTEN           ADC_ATTEN_DB_12
-#define BITWIDTH            ADC_BITWIDTH_12
+#define ADC_CHANNEL_GPIO16   ADC_CHANNEL_5 // GPIO16 is ADC Channel 5 
+#define ADC_CHANNEL_GPIO17   ADC_CHANNEL_6 // GPIO17 is ADC Channel 6  
+#define ADC_ATTEN           ADC_ATTEN_DB_12 // 0-3.6V
+#define BITWIDTH            ADC_BITWIDTH_12 // 12 bit width
 #define DELAY_MS 250
 
 
-#define HEADLIGHT_PIN 18
-#define BRIGHT_PIN 14   
+#define HEADLIGHT_PIN 18 // GPIO pin for headlight control
+#define BRIGHT_PIN 14   // GPIO pin for brightness control
 
-
-#define OFF  0
+// Defining states for headlight control
+#define OFF  0 
 #define ON   1
 #define AUTO 2
 
@@ -48,9 +47,9 @@ void delay_ms(int t) {
 
 void app_main(void)
 {
-   int raw16, raw17;
-    int mv16, mv17;
-    int state;
+   int raw16, raw17; // ADC raw readings
+    int mv16, mv17; // ADC voltage readings in millivolts
+    int state; // state variable for headlight control
 
     
     gpio_reset_pin(HEADLIGHT_PIN);
@@ -65,21 +64,21 @@ void app_main(void)
     adc_oneshot_new_unit(&init_config, &adc2_handle);
 
    
-    adc_oneshot_chan_cfg_t config = {
+    adc_oneshot_chan_cfg_t config = { // Channel configuration
         .atten = ADC_ATTEN,
         .bitwidth = BITWIDTH
     };
-    adc_oneshot_config_channel(adc2_handle, ADC_CHANNEL_GPIO16, &config);
-    adc_oneshot_config_channel(adc2_handle, ADC_CHANNEL_GPIO17, &config);
+    adc_oneshot_config_channel(adc2_handle, ADC_CHANNEL_GPIO16, &config); // Configure ADC channel for GPIO16
+    adc_oneshot_config_channel(adc2_handle, ADC_CHANNEL_GPIO17, &config); // Configure ADC channel for GPIO17
 
     
-    adc_cali_curve_fitting_config_t cali16_cfg = {
+    adc_cali_curve_fitting_config_t cali16_cfg = { // Calibration configuration for GPIO16
         .unit_id = ADC_UNIT_2,
         .chan = ADC_CHANNEL_GPIO16,
         .atten = ADC_ATTEN,
         .bitwidth = BITWIDTH
     };
-    adc_cali_curve_fitting_config_t cali17_cfg = {
+    adc_cali_curve_fitting_config_t cali17_cfg = { // Calibration configuration for GPIO17
         .unit_id = ADC_UNIT_2,
         .chan = ADC_CHANNEL_GPIO17,
         .atten = ADC_ATTEN,
@@ -127,7 +126,8 @@ void app_main(void)
    gpio_pullup_en(BUTTON_DSSB);
    gpio_pullup_en(BUTTON_PSSB);
    gpio_pullup_en(BUTTON_IG);
-   
+
+   // Initializing flags for printing correctly (only once per condition)
    bool welcomeflag = true;
    bool enginestartedflag = true;
    bool ignitioninhibitflag = true;
@@ -211,8 +211,8 @@ void app_main(void)
                 gpio_set_level(HEADLIGHT_PIN, 0);
                 gpio_set_level(BRIGHT_PIN, 0);
                 gpio_set_level(LED_red, 0);
-                rlstate = false;
-                enginestartedflag = true;
+                rlstate = false;            // Reset red light state
+                enginestartedflag = true; // Reset flags for next engine start
                 ignitioninhibitflag = true;
                 drivseatflag = true;
                 passeatflag = true;
@@ -286,8 +286,8 @@ if (mv16 >= 0 && mv16 < 1060) { //range for when light mode is set to off
                 }
                 
                 else {
-                    gpio_set_level(HEADLIGHT_PIN, prevlev);
-                    gpio_set_level(BRIGHT_PIN, prevlev);
+                    gpio_set_level(HEADLIGHT_PIN, prevlev); // maintain previous state
+                    gpio_set_level(BRIGHT_PIN, prevlev); // maintain previous state
                     
                 }
                 break;

@@ -10,48 +10,54 @@ the headlights are on we added a switch to turn on the high beams.
 Starting Repository
 [(https://github.com/goldstn2-oss/Project-1-218-N-M)]
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|                                                                                       Table of Testing Results For the Ignitions                                                                                       |
-+---------------------------------------------------------+-----------------------------------------------------------------------+--------------------------------------------------------------------------------------+
-| Specification                                           | |       Test Process                                                  | Results                                                                              |
-+---------------------------------------------------------+-----------------------------------------------------------------------+--------------------------------------------------------------------------------------+
-| Turn Green LED on                                       | 4 total switches:(DS,PS,DSSB,PSSB)                                    | 1.'Welcome to enhanced alarm system model 218-W26'                                   |
-| -->Igntion is ableto be pushed safely                   | 1. All switches on                                                    | 2. No Green light for All cases. Only special case is no driver                      |
-|                                                         | 2. All switches but 1                                                 | --> the welcome message not printed                                                  |
-|                                                         | 3. No buttons pressed                                                 | 3. No Green light or welcome message                                                 |
-+---------------------------------------------------------+-----------------------------------------------------------------------+--------------------------------------------------------------------------------------+
-| Try to start the engine by pressing the ignition button | 1. When all the switches are on                                       | 4 Error Message:                                                                     |
-|                                                         | ( green led is on and the welcome                                     |    a. Driver seat is not occupies                                                    |
-|                                                         | message is up)                                                        |    b. Passenger seat is not occupied                                                 |
-|                                                         |                                                                       |    c. Driver seatbelt not fastened                                                   |
-|                                                         | 2. When 1 or multiple of the                                          |    d passenger seatbelt not fastened                                                 |
-|                                                         | switches is off                                                       |                                                                                      |
-|                                                         | (green light is off and maybe no                                      | 1. Red Light turns on, 'Engine started', the switches states                         |
-|                                                         | welcome message if driver isn't                                       | don't change anything about the system.                                              |
-|                                                         | seated)                                                               |                                                                                      |
-|                                                         |                                                                       | 2. Error message a, b, c, and/or d is printed based on which                         |
-|                                                         | 3. When 1 or multiple switches are off                                | switch is not on. The buzzer goes off. 'Ignition Inhibited' is                       |
-|                                                         | (green light is off and maybe no welcome message if driver isn't      | printed.                                                                             |
-|                                                         | seated). The ignition is pressed, then the switches not on are turned |                                                                                      |
-|                                                         | on again. Finally, the ignition is pressed again.                     | 3. Error message a, b, c, and/or d is printed based on which switch is not on.       |
-|                                                         |                                                                       | The buzzer goes off. 'Ignition Inhibited' is printed.                                |
-|                                                         |                                                                       | Then, when the switches are turned back on that were                                 |
-|                                                         |                                                                       | previously off, the green light turns back on (the welcome message                   |
-|                                                         |                                                                       | is printed if the driver hasn't already sat down), the buzzer then turns off.        |
-|                                                         |                                                                       | When the ignition button is pressed again --> Red Light turns on, 'Engine started',  |
-|                                                         |                                                                       | the switches states don't change anything about the system.                          |
-+---------------------------------------------------------+-----------------------------------------------------------------------+--------------------------------------------------------------------------------------+
-| Turning off the engine by pressing the ignition button  | 1. All switches are still in the on position                          | 1. Red light turns off, 'Engine Off!'. Green light turns back on indicating it       |
-|                                                         |                                                                       | is safe to turn the car back on.                                                     |
-|                                                         | 2. 1 of the 4 switches is off.                                        |                                                                                      |
-|                                                         | This may be because the passenger got out for                         | 2. Red light turns off, 'Engine Off!'. Green light does not turn back on.            |
-|                                                         | example.                                                              |                                                                                      |
-+---------------------------------------------------------+-----------------------------------------------------------------------+--------------------------------------------------------------------------------------+
-
-
-
-
-
++------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                   Table of Testing Results For the Ignitions                                                   |
++---------------------------------------+---------------------------------------------------+----------------------------------------------------+
+| Specification                         | Test Process                                      | Results                                            |
++---------------------------------------+---------------------------------------------------+----------------------------------------------------+
+| Turn Green LED on                     | 4 total switches:(DS,PS,DSSB,PSSB)                | 1.'Welcome to enhanced alarm system model 218-W26' |
+| -->Igntion is ableto be pushed safely | 1. All switches on                                | 2. No Green light for All cases.                   |
+|                                       | 2. All switches but 1                             | Only special case is no driver                     |
+|                                       | 3. No buttons pressed                             | --> the welcome message not printed                |
+|                                       |                                                   | 3. No Green light or welcome message               |
++---------------------------------------+---------------------------------------------------+----------------------------------------------------+
+| Try to start the engine               | 1. When all the switches are on                   | 4 Error Message:                                   |
+| by pressing the ignition button       | ( green led is on and the welcome                 |    a. Driver seat is not occupies                  |
+|                                       | message is up)                                    |    b. Passenger seat is not occupied               |
+|                                       |                                                   |    c. Driver seatbelt not fastened                 |
+|                                       | 2. When 1 or multiple of the                      |    d passenger seatbelt not fastened               |
+|                                       | switches is off                                   |                                                    |
+|                                       | (green light is off and maybe no                  | 1. Red Light turns on, 'Engine started',           |
+|                                       | welcome message if driver isn't                   | the switches states                                |
+|                                       | seated)                                           | don't change anything about the system.            |
+|                                       |                                                   |                                                    |
+|                                       | 3. When 1 or multiple switches are off            | 2. Error message a, b, c, and/or d is              |
+|                                       | (green light is off and maybe no welcome          | printed based on which                             |
+|                                       | message if driver isn't seated). The ignition     | switch is not on. The buzzer goes off.             |
+|                                       | is pressed, then the switches not on are turned   | 'Ignition Inhibited' is printed.                   |
+|                                       | on again. Finally, the ignition is pressed again. |                                                    |
+|                                       |                                                   | 3. Error message a, b, c, and/or d is printed      |
+|                                       |                                                   | based on which switch is not on.                   |
+|                                       |                                                   | The buzzer goes off.                               |
+|                                       |                                                   | 'Ignition Inhibited' is printed.                   |
+|                                       |                                                   | Then, when the switches are                        |
+|                                       |                                                   | turned back on that were previously                |
+|                                       |                                                   | off, the green light turns back on                 |
+|                                       |                                                   | (the welcome message is printed                    |
+|                                       |                                                   | if the driver hasn't already sat down),            |
+|                                       |                                                   | and the buzzer then turns off.                     |
+|                                       |                                                   | When the ignition button is pressed again -->      |
+|                                       |                                                   | Red Light turns on,'Engine started', and           |
+|                                       |                                                   | the switches states don't change anything          |
+|                                       |                                                   | about the system.                                  |
++---------------------------------------+---------------------------------------------------+----------------------------------------------------+
+| Turning off the engine                | 1. All switches are still in the on position      | 1. Red light turns off, 'Engine Off!'.             |
+| by pressing the ignition button       |                                                   | Green light turns back on indicating it            |
+|                                       | 2. 1 of the 4 switches is off.                    | is safe to turn the car back on.                   |
+|                                       | This may be because the passenger got out for     |                                                    |
+|                                       | example.                                          | 2. Red light turns off, 'Engine Off!'.             |
+|                                       |                                                   | Green light does not turn back on.                 |
++---------------------------------------+---------------------------------------------------+----------------------------------------------------+
 
 
 
